@@ -1,0 +1,11 @@
+﻿<ul>
+    <li *ngFor="let hero of heroes">
+        <span>{{hero.id}} - {{hero.name}}</span>
+    </li>
+</ul>
+
+<label>Type Value:</label>
+<input [(ngModel)]="testValue" placeholder="value">
+<button (click)="onClick()" class="buttonDark">test button 1</button>
+
+<div class="loader">loading...</div>
