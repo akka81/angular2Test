@@ -1,6 +1,7 @@
 ﻿var webpack = require('./node_modules/webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var helpers = require('./config/helpers')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
     },
     output: {
         publicPath: '/Build/Scripts',
-        path:helpers.root('./Build/Scripts'),
+        path: helpers.root('./Build/Scripts'),
         filename: '[name].js',
         chunkFilename: '[id].chunk.js'
     },
@@ -34,7 +35,8 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loaders: 'style-loader!css-loader'
+                //loaders: 'style-loader!css-loader'
+                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
             }
         ]
     },
@@ -51,8 +53,8 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['main', 'vendor', 'polyfills']
         }),
-
-       new HtmlWebpackPlugin({
+        new ExtractTextPlugin('[name].css'),
+        new HtmlWebpackPlugin({
             template: './index.html'
         })
     ],
