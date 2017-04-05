@@ -83,7 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Build\Scripts\index.html" />
-    <Content Include="Build\Scripts\vendor.js" />
     <Content Include="config\helpers.js" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
